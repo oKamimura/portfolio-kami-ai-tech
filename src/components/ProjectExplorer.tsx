@@ -46,10 +46,12 @@ export default function ProjectExplorer() {
           ))}
         </div>
 
-        <div className="pointer-events-none absolute top-1/2 right-0 hidden -translate-y-1/2 flex-col gap-2.5 lg:flex">
-          {filtered.map((_, i) => (
-            <Dot key={i} index={i} total={filtered.length} progress={scrollYProgress} />
-          ))}
+        <div className="pointer-events-none absolute inset-0 hidden lg:block">
+          <div className="sticky top-0 flex h-screen flex-col items-end justify-center gap-2.5 pr-1">
+            {filtered.map((_, i) => (
+              <Dot key={i} index={i} total={filtered.length} progress={scrollYProgress} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -119,7 +121,7 @@ function Card({ project }: { project: Project }) {
       )}
 
       <div className="flex flex-1 items-center justify-center px-8 pt-8">
-        {project.image ? (
+        {project.video || project.image ? (
           <div className="w-full max-w-[86%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
             <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-white px-3">
               <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
@@ -127,13 +129,26 @@ function Card({ project }: { project: Project }) {
               <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
             </div>
             <div className="relative aspect-[16/10] w-full">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(min-width: 1024px) 560px, 90vw"
-                className="object-cover object-left-top"
-              />
+              {project.video ? (
+                <video
+                  src={project.video}
+                  poster={project.image}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover object-left-top"
+                />
+              ) : (
+                <Image
+                  src={project.image!}
+                  alt={project.title}
+                  fill
+                  sizes="(min-width: 1024px) 560px, 90vw"
+                  className="object-cover object-left-top"
+                />
+              )}
             </div>
           </div>
         ) : (
