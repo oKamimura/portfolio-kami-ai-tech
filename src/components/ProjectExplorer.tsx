@@ -109,7 +109,45 @@ function StackItem({
 }
 
 function Card({ project }: { project: Project }) {
-  const body = (
+  const body = project.flat ? (
+    <div
+      className="relative flex flex-col overflow-hidden rounded-[28px]"
+      style={{ backgroundColor: project.bg }}
+    >
+      {project.image && (
+        <div className="relative aspect-[16/10] w-full">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1024px) 560px, 90vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-1 px-8 py-6">
+        <p
+          className="text-xs font-medium tracking-wide uppercase opacity-60"
+          style={{ color: project.label }}
+        >
+          {project.kicker}
+        </p>
+        <h3
+          className="font-display text-xl font-semibold tracking-tight sm:text-2xl"
+          style={{ color: project.label }}
+        >
+          {project.title}
+        </h3>
+        <p
+          className="max-w-md text-sm leading-relaxed opacity-70"
+          style={{ color: project.label }}
+        >
+          {project.description}
+        </p>
+      </div>
+    </div>
+  ) : (
     <div
       className="relative flex h-[400px] items-center justify-center overflow-hidden rounded-[28px] sm:h-[460px]"
       style={{ backgroundColor: project.bg }}
@@ -120,18 +158,7 @@ function Card({ project }: { project: Project }) {
         </span>
       )}
 
-      {project.flat && project.image ? (
-        <>
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(min-width: 1024px) 560px, 90vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
-        </>
-      ) : project.video || project.image ? (
+      {project.video || project.image ? (
         <div className="w-full max-w-[88%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
           <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-white px-3">
             <span className="h-1.5 w-1.5 rounded-full bg-black/10" />

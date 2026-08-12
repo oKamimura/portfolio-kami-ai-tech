@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { Mail, MessageCircle } from "lucide-react";
 
-// TODO: confirmar número de WhatsApp real antes de enviar pro cliente
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511947471469";
 
 const STACK = ["Next.js", "n8n", "Supabase", "Claude Code"];
 
