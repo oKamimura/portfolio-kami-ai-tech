@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
+
+// TODO: confirmar número de WhatsApp real antes de enviar pro cliente
+const WHATSAPP_NUMBER = "5511999999999";
+
+const STACK = ["Next.js", "n8n", "Supabase", "Claude Code"];
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -44,9 +49,20 @@ export default function Sidebar() {
         </div>
 
         <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-          Sites e produtos digitais com IA aplicada de ponta a ponta —
-          também especialista em otimização de SEO potencializada por IA.
+          Sites, e-commerce e automações com IA.
+          <br />
+          Feitos para vender e aparecer no Google.
         </p>
+
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex w-fit items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-accent-strong"
+        >
+          <MessageCircle size={16} />
+          Vamos conversar
+        </a>
 
         <div className="flex gap-3">
           <a
@@ -66,6 +82,8 @@ export default function Sidebar() {
             <InstagramIcon />
           </a>
         </div>
+
+        <p className="text-xs text-muted-foreground/70">{STACK.join(" · ")}</p>
       </div>
 
       <p className="hidden text-xs text-muted-foreground/60 lg:block lg:absolute lg:bottom-16">

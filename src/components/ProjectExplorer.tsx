@@ -111,7 +111,7 @@ function StackItem({
 function Card({ project }: { project: Project }) {
   const body = (
     <div
-      className="relative flex h-[480px] flex-col gap-5 overflow-hidden rounded-[28px] sm:h-[560px]"
+      className="relative flex h-[400px] items-center justify-center overflow-hidden rounded-[28px] sm:h-[460px]"
       style={{ backgroundColor: project.bg }}
     >
       {project.url && (
@@ -120,67 +120,62 @@ function Card({ project }: { project: Project }) {
         </span>
       )}
 
-      <div className="flex min-h-0 flex-1 items-center justify-center px-8 pt-8">
-        {project.video || project.image ? (
-          <div className="w-full max-w-[72%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
-            <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-white px-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-              <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-              <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-            </div>
-            <div className="relative aspect-[16/10] w-full">
-              {project.video ? (
-                <video
-                  src={project.video}
-                  poster={project.image}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover object-left-top"
-                />
-              ) : (
-                <Image
-                  src={project.image!}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 560px, 90vw"
-                  className="object-cover object-left-top"
-                />
-              )}
-            </div>
+      {project.flat && project.image ? (
+        <>
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1024px) 560px, 90vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
+        </>
+      ) : project.video || project.image ? (
+        <div className="w-full max-w-[88%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+          <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-white px-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
+            <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
+            <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
           </div>
-        ) : (
-          <span
-            className="rounded-full border px-4 py-1.5 text-xs font-medium"
-            style={{ borderColor: `${project.label}40`, color: project.label }}
-          >
-            {project.badge}
-          </span>
-        )}
-      </div>
+          <div className="relative aspect-[16/10] w-full">
+            {project.video ? (
+              <video
+                src={project.video}
+                poster={project.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 h-full w-full object-cover object-left-top"
+              />
+            ) : (
+              <Image
+                src={project.image!}
+                alt={project.title}
+                fill
+                sizes="(min-width: 1024px) 560px, 90vw"
+                className="object-cover object-left-top"
+              />
+            )}
+          </div>
+        </div>
+      ) : (
+        <span
+          className="rounded-full border px-4 py-1.5 text-xs font-medium"
+          style={{ borderColor: `${project.label}40`, color: project.label }}
+        >
+          {project.badge}
+        </span>
+      )}
 
-      <div className="flex flex-col gap-1 px-8 pb-8">
-        <p
-          className="text-xs font-medium tracking-wide uppercase opacity-60"
-          style={{ color: project.label }}
-        >
-          {project.kicker}
-        </p>
-        <h3
-          className="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
-          style={{ color: project.label }}
-        >
-          {project.title}
-        </h3>
-        <p
-          className="max-w-md text-sm leading-relaxed opacity-70"
-          style={{ color: project.label }}
-        >
-          {project.description}
-        </p>
-      </div>
+      <p
+        className="absolute bottom-5 left-6 text-sm font-medium"
+        style={{ color: project.label }}
+      >
+        {project.title}
+      </p>
     </div>
   );
 

@@ -11,6 +11,8 @@ export interface Project {
   image?: string;
   /** Looping muted preview clip — used instead of `image` when present. */
   video?: string;
+  /** Render `image` full-bleed without the browser-window mockup (for illustrations, not site screenshots). */
+  flat?: boolean;
   /** Solid card background color (hex) — the site's own brand tone. */
   bg: string;
   /** Label text color, chosen for contrast against `bg`. */
@@ -89,6 +91,8 @@ export const projects: Project[] = [
     description:
       "Agente de IA que responde, qualifica e agenda automaticamente pelo WhatsApp, com transferência para humano quando necessário.",
     badge: "Sob demanda",
+    image: "/shots/auto-whatsapp.jpg",
+    flat: true,
     bg: "#161009",
     label: "#c9a98a",
     tags: ["IA conversacional", "WhatsApp"],
@@ -101,6 +105,8 @@ export const projects: Project[] = [
     description:
       "Automações self-hosted que conectam APIs, planilhas, CRMs e IA generativa sem depender de ferramentas fechadas.",
     badge: "Sob demanda",
+    image: "/shots/auto-n8n.jpg",
+    flat: true,
     bg: "#161009",
     label: "#c9a98a",
     tags: ["n8n", "Integrações"],
@@ -113,6 +119,8 @@ export const projects: Project[] = [
     description:
       "Painéis e automações que conectam dados de times comerciais e operacionais, cortando trabalho manual repetitivo.",
     badge: "Sob demanda",
+    image: "/shots/auto-dashboard.jpg",
+    flat: true,
     bg: "#161009",
     label: "#c9a98a",
     tags: ["Dashboards", "Automação interna"],
