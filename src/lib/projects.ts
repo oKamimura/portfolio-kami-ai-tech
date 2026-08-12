@@ -1,4 +1,4 @@
-export type Category = "sites" | "apps" | "ecommerce" | "automacoes";
+export type Category = "sites" | "ecommerce" | "automacoes";
 
 export interface Project {
   id: string;
@@ -18,7 +18,6 @@ export interface Project {
 
 export const categories: { id: Category; label: string }[] = [
   { id: "sites", label: "Sites" },
-  { id: "apps", label: "Produtos & Apps" },
   { id: "ecommerce", label: "E-commerce" },
   { id: "automacoes", label: "Automações & IA" },
 ];
@@ -62,30 +61,6 @@ export const projects: Project[] = [
     bg: "#ece1cb",
     label: "#3a2f1c",
     tags: ["Landing page", "Produto digital"],
-  },
-  {
-    id: "visu-ai",
-    title: "Visu.AI",
-    category: "apps",
-    kicker: "App de IA",
-    description:
-      "Transforma foto de produto em foto com modelo usando IA — upload simples, resultado em minutos, sem ensaio fotográfico.",
-    badge: "Em breve",
-    bg: "#161009",
-    label: "#c9a98a",
-    tags: ["IA generativa", "Ferramenta web"],
-  },
-  {
-    id: "thibets",
-    title: "ThiBETS",
-    category: "apps",
-    kicker: "App de análise",
-    description:
-      "Analisador de apostas esportivas com IA: cruza odds e estatísticas para apontar valor em tempo real.",
-    badge: "Em breve",
-    bg: "#161009",
-    label: "#c9a98a",
-    tags: ["IA", "Dados em tempo real"],
   },
   {
     id: "ayam",
