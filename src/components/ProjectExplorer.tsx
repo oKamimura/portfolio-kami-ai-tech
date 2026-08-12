@@ -111,7 +111,7 @@ function StackItem({
 function Card({ project }: { project: Project }) {
   const body = (
     <div
-      className="relative flex h-[380px] flex-col overflow-hidden rounded-[28px] sm:h-[440px]"
+      className="relative flex h-[480px] flex-col gap-5 overflow-hidden rounded-[28px] sm:h-[560px]"
       style={{ backgroundColor: project.bg }}
     >
       {project.url && (
@@ -120,9 +120,9 @@ function Card({ project }: { project: Project }) {
         </span>
       )}
 
-      <div className="flex flex-1 items-center justify-center px-8 pt-8">
+      <div className="flex min-h-0 flex-1 items-center justify-center px-8 pt-8">
         {project.video || project.image ? (
-          <div className="w-full max-w-[86%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+          <div className="w-full max-w-[72%] overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
             <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-white px-3">
               <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
               <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
