@@ -8,6 +8,7 @@ export interface Project {
   description: string;
   url?: string;
   badge?: string;
+  image?: string;
   tags: string[];
 }
 
@@ -27,6 +28,7 @@ export const projects: Project[] = [
     description:
       "Estúdio de conteúdo visual com IA para lojistas de moda — transforma fotos simples de produto em foto com modelo, vídeo para Reels e criativo para anúncio.",
     url: "https://www.estudiovitri.com",
+    image: "/shots/vitri.jpg",
     tags: ["Next.js", "SaaS", "IA"],
   },
   {
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     description:
       "Produto de música personalizada com IA: o cliente conta a história em um bate-papo de 2 minutos e recebe uma prévia grátis antes de comprar.",
     url: "https://www.tocaohino.com.br",
+    image: "/shots/toca-o-hino.jpg",
     tags: ["Landing page", "Quiz/Chat", "IA generativa"],
   },
   {
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     description:
       "Página de vendas para um kit de skills prontas para o Claude — sistema completo com depoimentos, FAQ e checkout direto.",
     url: "https://www.kitclaude-skills.com.br",
+    image: "/shots/kitclaude.jpg",
     tags: ["Landing page", "Produto digital"],
   },
   {
